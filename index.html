@@ -481,7 +481,7 @@
   #ubu-chatbot .msg.bot { background: #162447; border: 1px solid rgba(99,179,237,0.2); color: #e8f0fe; }
   #ubu-chatbot .msg.user { margin-left: auto; color: #fff; }
   #ubu-chatbot .input { border-top: 1px solid rgba(99,179,237,0.2); padding: 8px; display: flex; gap: 6px; background: #0f1f3d; }
-  #ubu-chatbot .input input { flex: 1; border: 1px solid rgba(99,179,237,0.25); border-radius: 8px; padding: 7px 9px; font-size: 13px; background: #0a1628; color: #e8f0fe; }
+  #ubu-chatbot .input input { flex: 1; border: 1px solid rgba(99,179,237,0.25); border-radius: 8px; padding: 7px 9px; font-size: 16px; background: #0a1628; color: #e8f0fe; }
   #ubu-chatbot .input input::placeholder { color: #4a6fa8; }
   #ubu-chatbot .input button { border: 0; width: 34px; height: 34px; border-radius: 999px; color: #fff; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease; }
   #ubu-chatbot .input button:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(99,179,237,.3); }
@@ -503,7 +503,7 @@
       <img id="ubu-chatbot-launcher-img" class="mascot-img" src="/mascots/welcome.svg" alt="บัวบาน" />
     </button>
   </div>
-  <div id="ubu-chatbot-panel" class="panel" style="display:flex;">
+  <div id="ubu-chatbot-panel" class="panel" style="display:none;">
     <div id="ubu-chatbot-header" class="header">
       <span>น้องบัวบาน</span>
       <button id="ubu-chatbot-close" type="button" style="background:transparent;border:0;color:#fff;font-weight:700;cursor:pointer;font-size:16px;line-height:1;padding:2px 6px;">×</button>
@@ -546,7 +546,6 @@ const input = document.getElementById("ubu-chatbot-input");
 const sendBtn = document.getElementById("ubu-chatbot-send");
 header.style.background = BOT_CONFIG.headerColor;
 sendBtn.style.background = BOT_CONFIG.headerColor;
-launcher.style.display = "none";
 if (!body.dataset.welcomeShown) {
   addMsg(BOT_CONFIG.welcomeMessage, "bot", "welcome");
   body.dataset.welcomeShown = "1";
@@ -601,7 +600,7 @@ async function askBot(message) {
     const res = await fetch(BOT_CONFIG.webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chatInput: message, message, mascot: "บัวบาน" }),
+      body: JSON.stringify({ chatInput: message, message, mascot: "aadev" }),
       signal: controller.signal
     });
     const data = await res.json();
